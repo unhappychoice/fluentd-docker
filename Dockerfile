@@ -1,7 +1,5 @@
 FROM fluent/fluentd:v0.12-debian-onbuild
 
-USER root
-
 RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
@@ -16,6 +14,3 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev" \
                   $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
            /home/fluent/.gem/ruby/2.3.0/cache/*.gem
-
-USER fluent
-
